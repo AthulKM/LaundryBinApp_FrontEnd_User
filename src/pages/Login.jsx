@@ -1,10 +1,11 @@
-// src/components/Login.jsx
+
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axiosInstance from '../axios/axiosInstance.js';
 import { Button, Form as BootstrapForm, Container, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import '../App.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -51,11 +52,11 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <Container className='formContainer'>
       <h2>Login</h2>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
         {({ isSubmitting, status }) => (
-          <Form as={BootstrapForm}>
+          <Form className='loginForm' as={BootstrapForm}>
             {status && status.error && <Alert variant="danger">{status.error}</Alert>}
             {status && status.success && <Alert variant="success">{status.success}</Alert>}
 
@@ -81,7 +82,7 @@ const Login = () => {
               <ErrorMessage name="password" component="div" className="text-danger" />
             </BootstrapForm.Group>
 
-            <Button variant="primary" type="submit" disabled={isSubmitting}>
+            <Button className='loginButton' variant="primary" type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Logging in...' : 'Login'}
             </Button>
           </Form>
