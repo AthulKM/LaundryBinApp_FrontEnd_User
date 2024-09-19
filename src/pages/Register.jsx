@@ -13,27 +13,49 @@ const Register = () => {
     confirmPassword: '',
   };
 
+  // const validationSchema = Yup.object({
+  //   username: Yup.string().required('Username is required'),
+  //   email: Yup.string().email('Invalid email address')
+  //     .nullable()
+  //     .when('phoneNumber', {
+  //       is: (val) => !val || val.length === 0,
+  //       then: Yup.string().required('Either email or phone number is required'),
+  //       otherwise: Yup.string().nullable(),
+  //     }),
+  //   phoneNumber: Yup.string().matches(/^[0-9]{10}$/, 'Phone number must be 10 digits')
+  //     .nullable()
+  //     .when('email', {
+  //       is: (val) => !val || val.length === 0,
+  //       then: Yup.string().required('Either email or phone number is required'),
+  //       otherwise: Yup.string().nullable(),
+  //     }),
+  //   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+  //   confirmPassword: Yup.string()
+  //     .oneOf([Yup.ref('password'), null], 'Passwords must match')
+  //     .required('Confirm password is required'),
+  // });
+  
   const validationSchema = Yup.object({
     username: Yup.string().required('Username is required'),
-    email: Yup.string().email('Invalid email address').when('phoneNumber', {
-      is: (val) => !val || val.length === 0,
-      then: Yup.string().required('Either email or phone number is required'),
-      otherwise: Yup.string().nullable(),
-    }),
-    phoneNumber: Yup.string().matches(/^[0-9]{10}$/, 'Phone number must be 10 digits').when('email', {
-      is: (val) => !val || val.length === 0,
-      then: Yup.string().required('Either email or phone number is required'),
-      otherwise: Yup.string().nullable(),
-    }),
+    email: Yup.string()
+      .email('Invalid email address')
+      .nullable(true), // Allow null values
+    phoneNumber: Yup.string()
+      .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits')
+      .nullable(true), // Allow null values
     password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
       .required('Confirm password is required'),
+  }).test('email-or-phone', 'Either email or phone number is required', function (value) {
+    const { email, phoneNumber } = value;
+    return !!email || !!phoneNumber;
   });
+  
 
   const handleSubmit = async (values, { setSubmitting, setStatus }) => {
     try {
-      const response = await axiosInstance.post('/register', values);
+      const response = await axiosInstance.post('/user/register/', values);
       setStatus({ success: response.data.message });
     } catch (error) {
       setStatus({ error: error.response ? error.response.data.message : 'Registration failed' });

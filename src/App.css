@@ -2,6 +2,18 @@
   width: 100%;
   
 }
+body {
+  background-color: lightblue !important;
+}
+
+/* Margins and Padding */
+
+.mt-20 { /* Margin top */
+  margin-top: 20px;
+}
+.padding-top-50 {
+  padding-top: 50px;
+}
 
 /* Fonts */
 
@@ -15,35 +27,125 @@
   position: relative;
   
 }
-.appName h1 {
-  position: absolute;
-  left: 200px;
-  top: -50px;
-  font-size: 40px !important;
-  font-weight: 800 !important;
+
+
+
+
+/* Media queries for better responsiveness */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+
 }
-.formContainer {
-  margin: auto 0;
-  width: 50% !important;
-  background-color: rgba(81, 193, 245, 1);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  grid-gap: 30px;
-  color: white;
-  border-radius: 20px;
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
 }
-.padding-top-50 {
-  padding-top: 50px;
-}
-.formContainer .loginForm {
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
   
-  width: 50%;
-  margin: 0 auto;
 }
-.formContainer h2 {
-  margin-top:30px
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .appName h1 {
+    position: absolute;
+    left: 200px;
+    top: -58px;
+    font-size: 70px !important;
+    font-weight: 800 !important;
+  }
+  .formContainer {
+    margin: auto 0;
+    width: 50% !important;
+    background-color: rgba(81, 193, 245, 1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 30px;
+    color: white;
+    border-radius: 20px;
+  }
+  
+  .formContainer .loginForm {
+    
+    width: 50%;
+    margin: 0 auto;
+  }
+  .formContainer h2 {
+    margin-top:30px
+  }
+  .formContainer .loginForm .loginButton {
+    width: 25%;
+  }
 }
-.formContainer .loginForm .loginButton {
-  width: 25%;
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .appName h1 {
+    position: absolute;
+    left: 200px;
+    top: -58px;
+    font-size: 70px !important;
+    font-weight: 800 !important;
+  }
+  .formContainer {
+    margin: auto 0;
+    width: 50% !important;
+    background-color: rgba(81, 193, 245, 1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 30px;
+    color: white;
+    border-radius: 20px;
+  }
+  
+  .formContainer .loginForm {
+    
+    width: 50%;
+    margin: 0 auto;
+  }
+  .formContainer h2 {
+    margin-top:30px
+  }
+  .formContainer .loginForm .loginButton {
+    width: 25%;
+  }
+}
+
+/* XX-Large devices (very large desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .appName h1 {
+    position: absolute;
+    left: 200px;
+    top: -58px;
+    font-size: 70px !important;
+    font-weight: 800 !important;
+  }
+  .formContainer {
+    margin: auto 0;
+    width: 50% !important;
+    background-color: rgba(81, 193, 245, 1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 30px;
+    color: white;
+    border-radius: 20px;
+  }
+  
+  .formContainer .loginForm {
+    
+    width: 50%;
+    margin: 0 auto;
+  }
+  .formContainer h2 {
+    margin-top:30px
+  }
+  .formContainer .loginForm .loginButton {
+    width: 25%;
+  }
 }

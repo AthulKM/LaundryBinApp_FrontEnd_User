@@ -57,7 +57,7 @@ const Login = () => {
         <h1>Laundrybin</h1>
       </div>
     <Container className='formContainer'>
-      <h2>Login</h2>
+      {/* <h2>Login</h2> */}
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
         {({ isSubmitting, status }) => (
           <Form className='loginForm' as={BootstrapForm}>
@@ -86,7 +86,7 @@ const Login = () => {
               <ErrorMessage name="password" component="div" className="text-danger" />
             </BootstrapForm.Group>
 
-            <Button className='loginButton' variant="primary" type="submit" disabled={isSubmitting}>
+            <Button className='loginButton mt-20' variant="primary" type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Logging in...' : 'Login'}
             </Button>
           </Form>

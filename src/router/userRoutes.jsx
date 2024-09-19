@@ -9,7 +9,7 @@ const UserRoutes = () => {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Register />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/landing" element={<LandingPage />} />
     </Routes>
   );
