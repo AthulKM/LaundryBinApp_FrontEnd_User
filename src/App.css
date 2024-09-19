@@ -1,9 +1,30 @@
 #root {
   width: 100%;
+  
+}
+
+/* Fonts */
+
+.sofadi-one-regular {
+  font-family: "Sofadi One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.appName {
+  position: relative;
+  
+}
+.appName h1 {
+  position: absolute;
+  left: 200px;
+  top: -50px;
+  font-size: 40px !important;
+  font-weight: 800 !important;
 }
 .formContainer {
   margin: auto 0;
-  width: 30%;
+  width: 50% !important;
   background-color: rgba(81, 193, 245, 1);
   padding: 30px;
   display: flex;
@@ -12,14 +33,17 @@
   color: white;
   border-radius: 20px;
 }
+.padding-top-50 {
+  padding-top: 50px;
+}
 .formContainer .loginForm {
-  display: flex;
-  flex-direction: column;
-  grid-gap: 20px;
+  
   width: 50%;
   margin: 0 auto;
 }
-
+.formContainer h2 {
+  margin-top:30px
+}
 .formContainer .loginForm .loginButton {
   width: 25%;
 }

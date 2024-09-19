@@ -8,7 +8,7 @@ const LandingPage = ({ user }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('userToken');
-    navigate('/'); 
+    navigate('/login'); 
   };
 
   return (

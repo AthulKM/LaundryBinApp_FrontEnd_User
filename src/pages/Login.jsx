@@ -52,6 +52,10 @@ const Login = () => {
   };
 
   return (
+    <div className='padding-top-50'>
+      <div className='appName sofadi-one-regular '>
+        <h1>Laundrybin</h1>
+      </div>
     <Container className='formContainer'>
       <h2>Login</h2>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
@@ -89,6 +93,8 @@ const Login = () => {
         )}
       </Formik>
     </Container>
+    </div>
+    
   );
 };
 
