@@ -2,8 +2,11 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/userContext.jsx';
+
 
 const LandingPage = ({ user }) => {
+  const { userName } = useUser(); // Access the user from context
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,7 +16,7 @@ const LandingPage = ({ user }) => {
 
   return (
     <Container className="text-center mt-5">
-      <h1>Welcome, {user?.email || 'User'}!</h1>
+      {userName ? <h2>Hello, {userName}!</h2> : <h2>Hello, Guest!</h2>}
       <p>You have successfully logged in to the LaundryBinApp.</p>
       
       <Button variant="primary" onClick={() => navigate('/dashboard')}>

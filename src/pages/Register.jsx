@@ -3,8 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axiosInstance from '../axios/axiosInstance.js';
 import { Button, Form as BootstrapForm, Container, Alert } from 'react-bootstrap';
+import '../App.css';
+import { useUser } from '../context/userContext.jsx';
 
 const Register = () => {
+  const { setUser } = useUser();
   const initialValues = {
     username: '',
     email: '',
@@ -57,6 +60,8 @@ const Register = () => {
     try {
       const response = await axiosInstance.post('/user/register/', values);
       setStatus({ success: response.data.message });
+      // Save the username in context after successful registration
+      setUser(values.username);
     } catch (error) {
       setStatus({ error: error.response ? error.response.data.message : 'Registration failed' });
     }
@@ -65,7 +70,7 @@ const Register = () => {
 
   return (
     <Container>
-      <h2>Register</h2>
+      <h2>New user ? Register here ,</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -106,7 +111,7 @@ const Register = () => {
               <ErrorMessage name="confirmPassword" component="div" className="text-danger" />
             </BootstrapForm.Group>
 
-            <Button variant="primary" type="submit" disabled={isSubmitting}>
+            <Button className='mt-20' variant="primary" type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Registering...' : 'Register'}
             </Button>
           </Form>

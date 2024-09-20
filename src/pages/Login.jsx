@@ -6,8 +6,10 @@ import axiosInstance from '../axios/axiosInstance.js';
 import { Button, Form as BootstrapForm, Container, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import { useUser } from '../context/userContext.jsx';
 
 const Login = () => {
+  const { setUserName } = useUser();
   const navigate = useNavigate();
 
   const initialValues = {
@@ -37,7 +39,11 @@ const Login = () => {
         identifier: values.identifier, // can be either email or phoneNumber
         password: values.password,
       });
+      if (response.data.success) {
+        setUserName(response.data.data.username); // Set userName in context
+      }
       setStatus({ success: response.data.message });
+      
       
       
       const token = response.data.token;
@@ -97,5 +103,6 @@ const Login = () => {
     
   );
 };
+
 
 export default Login;
