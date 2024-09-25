@@ -5,8 +5,12 @@ import axiosInstance from '../axios/axiosInstance.js';
 import { Button, Form as BootstrapForm, Container, Alert } from 'react-bootstrap';
 import '../App.css';
 import { useUser } from '../context/userContext.jsx';
+import { useState } from 'react';
 
 const Register = () => {
+  const [otpSent, setOtpSent] = useState(false);
+  const [otpVerified, setOtpVerified] = useState(false);
+  const [otp, setOtp] = useState('');
   const { setUser } = useUser();
   const initialValues = {
     username: '',
@@ -14,6 +18,7 @@ const Register = () => {
     phoneNumber: '',
     password: '',
     confirmPassword: '',
+    otp:''
   };
 
   // const validationSchema = Yup.object({
@@ -58,6 +63,10 @@ const Register = () => {
 
   const handleSubmit = async (values, { setSubmitting, setStatus }) => {
     try {
+      if (!otpVerified) {
+        setStatus({ error: 'Please verify OTP before submitting.' });
+        return;
+      }
       const response = await axiosInstance.post('/user/register/', values);
       setStatus({ success: response.data.message });
       // Save the username in context after successful registration
@@ -68,6 +77,27 @@ const Register = () => {
     setSubmitting(false);
   };
 
+  const handleSendOtp = async (phoneNumber, setStatus) => {
+    try {
+      const response = await axiosInstance.post('/user/send-otp', { phoneNumber });
+      setOtpSent(true);
+      setStatus({ success: 'OTP sent successfully. Please check your phone.' });
+    } catch (error) {
+      setStatus({ error: 'Failed to send OTP. Please try again.' });
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    try {
+      const response = await axiosInstance.post('/user/verify-otp', { otp });
+      setOtpVerified(true);
+      alert('OTP verified successfully!');
+    } catch (error) {
+      alert('Invalid OTP. Please try again.');
+    }
+  };
+
+
   return (
     <Container>
       <h2>New user ? Register here ,</h2>
@@ -76,7 +106,7 @@ const Register = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting, status }) => (
+        {({ isSubmitting, status, setStatus, values }) => (
           <Form as={BootstrapForm}>
             {status && status.error && <Alert variant="danger">{status.error}</Alert>}
             {status && status.success && <Alert variant="success">{status.success}</Alert>}
@@ -97,7 +127,43 @@ const Register = () => {
               <BootstrapForm.Label>Phone Number</BootstrapForm.Label>
               <Field name="phoneNumber" type="text" as={BootstrapForm.Control} placeholder="Enter phone number" />
               <ErrorMessage name="phoneNumber" component="div" className="text-danger" />
+              {!otpSent && (
+                <Button
+                  variant="primary"
+                  onClick={() => handleSendOtp(values.phoneNumber, setStatus)}
+                  className="mt-2"
+                >
+                  Send OTP
+                </Button>
+              )}
+
             </BootstrapForm.Group>
+            
+            {otpSent && (
+              <BootstrapForm.Group controlId="otp">
+                <BootstrapForm.Label>Enter OTP</BootstrapForm.Label>
+                <Field
+                  name="otp"
+                  type="text"
+                  as={BootstrapForm.Control}
+                  placeholder="Enter OTP"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                />
+                <Button
+                  variant="secondary"
+                  onClick={handleVerifyOtp}
+                  className="mt-2"
+                  disabled={otp.length !== 6}
+                >
+                  Verify OTP
+                </Button>
+              </BootstrapForm.Group>
+            )}
+
+
+
+
 
             <BootstrapForm.Group controlId="password">
               <BootstrapForm.Label>Password</BootstrapForm.Label>
