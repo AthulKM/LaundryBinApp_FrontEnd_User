@@ -1,54 +1,66 @@
 import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import axiosInstance from '../axios/axiosInstance.js';
-import { Button, Form as BootstrapForm, Alert } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Button, Form as BootstrapForm, Container, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-const VerifyOtp = () => {
+
+const VerifyOtp = ({ userId }) => {
   const [otp, setOtp] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [statusMessage, setStatusMessage] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation();
-  const { otpToken, identifier } = location.state;
 
-  const handleOTPSubmit = async () => {
-    try {
+  const initialValues = { otp: 0 };
+
+  const validationSchema = Yup.object({
+    otp: Yup.string().required('OTP is required'),
+  });
+
+  const handleVerifyOTP = async (values, { setSubmitting }) => {
+      try {
       const response = await axiosInstance.post('/user/verify-otp', {
-        otp,
-        otpToken,
-        identifier, // email or phoneNumber
+        userId,
+        otp: values.otp,
       });
+      setStatusMessage({ success: response.data.message });
 
-      if (response.data.success) {
-        setSuccess('OTP verified successfully');
-        navigate('/landing'); // Redirect to landing page after successful OTP verification
-      }
+      // Navigate to another page (e.g., dashboard) upon successful OTP verification
+      navigate('/landing');
     } catch (error) {
-      setError(error.response ? error.response.data.message : 'Invalid OTP');
+      setStatusMessage({
+        error: error.response ? error.response.data.message : 'OTP verification failed',
+      });
     }
+    setSubmitting(false);
   };
 
   return (
-    <div className="padding-top-50">
-      <h2>Enter the OTP sent to {identifier}</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
-      {success && <Alert variant="success">{success}</Alert>}
-      <BootstrapForm>
-        <BootstrapForm.Group controlId="otp">
-          <BootstrapForm.Label>OTP</BootstrapForm.Label>
-          <BootstrapForm.Control
-            type="text"
-            placeholder="Enter OTP"
-            value={otp}
-            onChange={(e) => setOtp(e.target.value)}
-          />
-        </BootstrapForm.Group>
+    <Container className="formContainer">
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleVerifyOTP}>
+        {({ isSubmitting }) => (
+          <Form className="loginForm" as={BootstrapForm}>
+            {statusMessage && statusMessage.error && <Alert variant="danger">{statusMessage.error}</Alert>}
+            {statusMessage && statusMessage.success && <Alert variant="success">{statusMessage.success}</Alert>}
 
-        <Button variant="primary" onClick={handleOTPSubmit}>
-          Verify OTP
-        </Button>
-      </BootstrapForm>
-    </div>
+            <BootstrapForm.Group controlId="otp">
+              <BootstrapForm.Label>Enter OTP</BootstrapForm.Label>
+              <Field
+                name="otp"
+                type="number"
+                as={BootstrapForm.Control}
+                placeholder="Enter OTP"
+              />
+              <ErrorMessage name="otp" component="div" className="text-danger" />
+            </BootstrapForm.Group>
+
+            <Button className="loginButton mt-20" variant="primary" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Verifying OTP...' : 'Verify'}
+            </Button>
+          </Form>
+        )}
+      </Formik>
+    </Container>
   );
 };
 
