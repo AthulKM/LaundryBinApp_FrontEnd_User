@@ -8,9 +8,10 @@ import { useUser } from '../context/userContext.jsx';
 
 
 
-const VerifyOtp = ({ userId }) => {
+const VerifyPasswordResetOTP = ({ userId }) => {
     const {id } = useUser();
-  const [otp, setOtp] = useState('');
+    const [otp, setOtp] = useState('');
+    const[newPassword, setNewPassword] = useState('');
   const [statusMessage, setStatusMessage] = useState(null);
   const navigate = useNavigate();
 
@@ -22,14 +23,14 @@ const VerifyOtp = ({ userId }) => {
 
   const handleVerifyOTP = async (values, { setSubmitting }) => {
       try {
-      const response = await axiosInstance.post('/user/verify-otp', {
-        userId: id,
+      const response = await axiosInstance.post('/user/verify-passwordreset-otp', {
+        userId:id,
         otp: values.otp,
       });
       setStatusMessage({ success: response.data.message });
 
       // Navigate to another page (e.g., dashboard) upon successful OTP verification
-      navigate('/landing');
+      navigate('/password-reset');
     } catch (error) {
       setStatusMessage({
         error: error.response ? error.response.data.message : 'OTP verification failed',
@@ -67,4 +68,4 @@ const VerifyOtp = ({ userId }) => {
   );
 };
 
-export default VerifyOtp;
+export default VerifyPasswordResetOTP;

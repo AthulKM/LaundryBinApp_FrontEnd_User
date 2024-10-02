@@ -9,10 +9,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 const navigate = useNavigate();
-const [otp, setOtp] = useState('');
-const [userId, setUserId] = useState(null);
-const [otpStep, setOtpStep] = useState(false);
-const { setUserName, setId, id } = useUser();
+
+
+
+const { userName,setUserName, setId, id } = useUser();
   
   
 
@@ -45,7 +45,8 @@ const { setUserName, setId, id } = useUser();
 
       // Navigate to VerifyOtp and pass userId
       if (response.data.success) {
-        console.log(`User id is ${response.data.userId} `);
+        
+        setUserName(response.data.data);
         setId(response.data.userId);
         navigate('/verify-otp', { state: { userId: id} });
       }
@@ -57,6 +58,10 @@ const { setUserName, setId, id } = useUser();
 
       
   };
+ 
+  const handleForgotPassword = () => {
+    navigate('/forgot-password');
+  }
 
 
 
@@ -99,13 +104,20 @@ const { setUserName, setId, id } = useUser();
                 />
                 <ErrorMessage name="password" component="div" className="text-danger" />
               </BootstrapForm.Group>
-
+              
               <Button className="loginButton mt-20" variant="primary" type="submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Logging in...' : 'Login'}
               </Button>
+              
+              <button className="paragraphButton mt-20" onClick={handleForgotPassword}>
+                <p>Forgot password?</p>
+              </button>
+              
             </Form>
           )}
+          
         </Formik>
+        
         </Container>
         
         
