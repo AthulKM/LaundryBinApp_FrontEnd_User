@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axiosInstance from '../axios/axiosInstance.js';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import '../categories.css';
+import { useNavigate } from 'react-router-dom';
 
 const Categories = () => {
-  const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -18,6 +20,11 @@ const Categories = () => {
 
     fetchCategories();
   }, []);
+    
+    // Handle card click to navigate to ItemsPage
+  const handleCardClick = (categoryName) => {
+    navigate('/items', { state: { categoryName }});  // Pass categoryName as state
+  };
 
   return (
     <Container className="categories-container mt-5">
@@ -25,7 +32,7 @@ const Categories = () => {
       <Row>
         {categories.map((category) => (
           <Col key={category._id} xs={12} sm={6} md={4} lg={6} className="mb-4">
-            <Card>
+            <Card onClick={() => handleCardClick(category.name)} className="clickable-card">
               <Card.Img variant="top" src={category.image} alt={category.name} />
               <Card.Body>
                 <Card.Title>{category.name}</Card.Title>
