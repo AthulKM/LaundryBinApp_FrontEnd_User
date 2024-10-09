@@ -1,0 +1,38 @@
+.categories-container {
+    padding-top: 50px;
+  }
+  
+  .card {
+    width: 100%;
+    height: 300px; /* Set uniform card height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px; /* Optional: rounded corners for a cleaner look */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a slight depth */
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 180px; /* Control the height of the image */
+    object-fit: contain; /* Ensure the image scales without distortion */
+    padding: 10px; /* Add some padding inside the card for better presentation */
+    background-color: #f8f8f8; /* Light background to enhance the image's visibility */
+  }
+  
+  .card-body {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 14px;
+    color: #666;
+  }
+  

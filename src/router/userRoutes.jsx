@@ -8,6 +8,8 @@ import VerifyOtp from '../pages/VerifyOtp.jsx';
 import ForgotPassword from '../pages/ForgotPassword.jsx';
 import PasswordReset from '../pages/PasswordReset.jsx';
 import VerifyPasswordResetOTP from '../pages/VerifyPasswordResetOTP.jsx';
+import ItemsPage from '../pages/ItemsPage.jsx';
+import Instructions from '../pages/Instructions.jsx';
 
 
 const UserRoutes = () => {
@@ -21,7 +23,10 @@ const UserRoutes = () => {
         <Route path="/password-reset" element={ <PasswordReset/>} />
       
       <Route path="/landing" element={<LandingPage />} />
+      <Route path="/items" element={<ItemsPage />} />
+      <Route path="/instructions" element={<Instructions />} />
     </Routes>
+
   );
 };
 

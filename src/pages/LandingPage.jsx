@@ -1,8 +1,13 @@
 
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/userContext.jsx';
+import SlickSlider from '../features/SlickSliderOffers.jsx';
+import '../App.css';
+import Categories from './Categories.jsx';
 
 
 const LandingPage = ({ user }) => {
@@ -15,9 +20,12 @@ const LandingPage = ({ user }) => {
   };
 
   return (
-    <Container className="text-center mt-5">
-      {userName ? <h2>Hello, {userName}!</h2> : <h2>Hello, Guest!</h2>}
-      <p>You have successfully logged in to the LaundryBinApp.</p>
+    
+    <Container className=" landingContainer">
+      {userName ? <h2>Hello,<br /> {userName}! <br />Welcome back to LaundryBin.</h2>
+        
+        : <h2>Hello there! <br />Welcome to LaundryBin.</h2>}
+      
       
       <Button variant="primary" onClick={() => navigate('/dashboard')}>
         Go to Dashboard
@@ -25,7 +33,15 @@ const LandingPage = ({ user }) => {
       <Button variant="secondary" className="ml-2" onClick={handleLogout}>
         Logout
       </Button>
+      
+      <SlickSlider />
+      <Categories/>
+    
     </Container>
+    
+    
+    
+    
   );
 };
 
