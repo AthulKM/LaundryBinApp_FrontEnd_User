@@ -58,8 +58,8 @@ const Register = () => {
   };
 
   return (
-    <Container>
-      <h2>New user? Register here</h2>
+    <Container className='registrationContainer'>
+      <h2 className='outlined-text'>Create Account </h2>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -71,30 +71,30 @@ const Register = () => {
             {status && status.success && <Alert variant="success">{status.success}</Alert>}
 
             <BootstrapForm.Group controlId="username">
-              <BootstrapForm.Label>Username</BootstrapForm.Label>
-              <Field name="username" type="text" as={BootstrapForm.Control} placeholder="Enter username" />
+              <BootstrapForm.Label className='outlined-text'>Name</BootstrapForm.Label>
+              <Field name="username" type="text" as={BootstrapForm.Control} placeholder="Enter Name" />
               <ErrorMessage name="username" component="div" className="text-danger" />
             </BootstrapForm.Group>
 
             <BootstrapForm.Group controlId="identifier">
-              <BootstrapForm.Label>Email or Phone Number</BootstrapForm.Label>
+              <BootstrapForm.Label className='outlined-text'>Email or Phone Number</BootstrapForm.Label>
               <Field name="identifier" type="text" as={BootstrapForm.Control} placeholder="Enter email or phone number" />
               <ErrorMessage name="identifier" component="div" className="text-danger" />
             </BootstrapForm.Group>
 
             <BootstrapForm.Group controlId="password">
-              <BootstrapForm.Label>Password</BootstrapForm.Label>
+              <BootstrapForm.Label className='outlined-text'>Password</BootstrapForm.Label>
               <Field name="password" type="password" as={BootstrapForm.Control} placeholder="Enter password" />
               <ErrorMessage name="password" component="div" className="text-danger" />
             </BootstrapForm.Group>
 
             <BootstrapForm.Group controlId="confirmPassword">
-              <BootstrapForm.Label>Confirm Password</BootstrapForm.Label>
+              <BootstrapForm.Label className='outlined-text'>Confirm Password</BootstrapForm.Label>
               <Field name="confirmPassword" type="password" as={BootstrapForm.Control} placeholder="Confirm password" />
               <ErrorMessage name="confirmPassword" component="div" className="text-danger" />
             </BootstrapForm.Group>
 
-            <Button className='mt-20' variant="primary" type="submit" disabled={isSubmitting}>
+            <Button className='mt-20 outlined-text registerBtn' variant="primary" type="submit" disabled={isSubmitting} >
               {isSubmitting ? 'Registering...' : 'Register'}
             </Button>
           </Form>

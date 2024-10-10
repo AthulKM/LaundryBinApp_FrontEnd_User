@@ -81,7 +81,7 @@ const { userName,setUserName, setId, id } = useUser();
 
               <BootstrapForm.Group controlId="identifier">
                 <BootstrapForm.Label>Email or Phone Number</BootstrapForm.Label>
-                <Field
+                <Field 
                   name="identifier"
                   type="text"
                   as={BootstrapForm.Control}
@@ -92,9 +92,9 @@ const { userName,setUserName, setId, id } = useUser();
                 <ErrorMessage name="identifier" component="div" className="text-danger" />
               </BootstrapForm.Group>
 
-              <BootstrapForm.Group controlId="password">
-                <BootstrapForm.Label>Password</BootstrapForm.Label>
-                <Field
+              <BootstrapForm.Group controlId="password" className='mt-20'>
+                <BootstrapForm.Label >Password</BootstrapForm.Label>
+                <Field 
                   name="password"
                   type="password"
                   as={BootstrapForm.Control}
@@ -110,7 +110,7 @@ const { userName,setUserName, setId, id } = useUser();
               </Button>
               
               <button className="paragraphButton mt-20" onClick={handleForgotPassword}>
-                <p>Forgot password?</p>
+                <p>Forgot password ?</p>
               </button>
               
             </Form>

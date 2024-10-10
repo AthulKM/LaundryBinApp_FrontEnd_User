@@ -1,13 +1,14 @@
 #root {
   width: 100%;
   height: 100vw;
-  overflow: hidden !important;
+  /* overflow: hidden !important; */
 }
 
 body {
   background-color: lightblue !important;
-  overflow: hidden !important;
-  padding-top: 200px !important;
+  /* overflow: hidden !important; */
+  padding-top: 120px !important;
+  height: 100%;
 }
 
 /* Margins and Padding */
@@ -19,13 +20,28 @@ body {
   padding-top: 50px;
 }
 
-/* Fonts */
+.h-100 {
+  height: 100px !important;
+}
+
+
+/* Fonts  and font-sizes */
 
 .sofadi-one-regular {
   font-family: "Sofadi One", system-ui;
   font-weight: 400;
   font-style: normal;
 }
+.outlined-text {
+  color: white; /* Main text color */
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Black outline */
+}
+
+
 
 .appName {
   position: relative;
@@ -52,8 +68,21 @@ body {
   align-items: center;
 }
 
+/* Register component */
+.registrationContainer {
+  background: linear-gradient(to right, #735fe0, #7bedfe);
+  padding: 30px;
+}
+.registrationContainer h2 {
+  color: white;
+  font-size: 35px;
+}
 
 
+/* Login component */
+.formContainer {
+  background: linear-gradient(to right, #735fe0, #7bedfe);
+}
 
 
 
@@ -62,6 +91,17 @@ body {
 
 /* Extra small devices (phones, less than 576px) */
 @media (max-width: 575.98px) {
+
+  /* Register component */
+.registrationContainer {
+  background: linear-gradient(to right, #735fe0, #7bedfe);
+  padding: 30px;
+}
+.registrationContainer h2 {
+  color: white;
+  font-size: 35px;
+}
+
   .landingContainer {
     padding: 30px 50px !important;
   }
@@ -87,6 +127,17 @@ body {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+
+  /* Register component */
+.registrationContainer {
+  background: linear-gradient(to right, #735fe0, #7bedfe);
+  padding: 30px;
+}
+.registrationContainer h2 {
+  color: white;
+  font-size: 35px;
+}
+
   .landingContainer {
     padding: 30px 50px !important;
   }
@@ -112,6 +163,17 @@ body {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+
+  /* Register component */
+.registrationContainer {
+  background: linear-gradient(to right, #735fe0, #7bedfe);
+  padding: 30px;
+}
+.registrationContainer h2 {
+  color: white;
+  font-size: 35px;
+}
+
   .landingContainer {
     padding: 30px 50px !important;
   }
@@ -138,6 +200,17 @@ body {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+
+  /* Register component */
+.registrationContainer {
+  background: linear-gradient(to right, #735fe0, #7bedfe);
+  padding: 30px;
+}
+.registrationContainer h2 {
+  color: white;
+  font-size: 35px;
+}
+
   .landingContainer {
     padding: 30px 50px !important;
   }
@@ -194,6 +267,17 @@ body {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+
+  /* Register component */
+.registrationContainer {
+  background: linear-gradient(to right, #735fe0, #7bedfe);
+  padding: 30px;
+}
+.registrationContainer h2 {
+  color: white;
+  font-size: 35px;
+}
+
   .landingContainer {
     padding: 30px 50px !important;
   }
@@ -250,8 +334,38 @@ body {
 
 /* XX-Large devices (very large desktops, 1400px and up) */
 @media (min-width: 1400px) {
+
+  /* Register component */
+.registrationContainer {
+  background: linear-gradient(to right, #735fe0, #7bedfe);
+  padding: 100px !important;
+  border-radius: 30px;
+  width: 700px !important;
+}
+.registrationContainer h2 {
+  color: white;
+  font-size: 35px;
+}
+.registrationContainer .form-label {
+  font-size: 30px;
+  color: white;
+}
+.registrationContainer .form-control {
+  width: 400px;
+}
+.registrationContainer .text-danger {
+  font-size: 25px;
+  color: rgb(255, 72, 0) !important;
+}
+
+.registerBtn {
+  height: 50px !important;
+  background: linear-gradient(to right, #16962b, #8de7b1);
+  font-size: 25px !important;
+}
+
   .landingContainer {
-    padding: 30px 50px !important;
+    padding: 50px 50px !important;
     margin-top: 20px !important;
   }
   .slick-slider {
@@ -298,25 +412,43 @@ body {
   }
   .formContainer {
     margin: auto 0;
-    width: 50% !important;
-    background-color: rgba(81, 193, 245, 1);
+    width: 700px !important;
+
+    /* background-color: rgba(81, 193, 245, 1); */
+    
+    
+        
     padding: 30px;
     display: flex;
     flex-direction: column;
     grid-gap: 30px;
     color: white;
-    border-radius: 20px;
+    border-radius: 50px;
   }
   
   .formContainer .loginForm {
-    
+    height: 400px;
     width: 50%;
     margin: 0 auto;
+    padding-top: 50px;
+  }
+  .formContainer .loginForm label {
+    font-size: 30px;
+    font-weight: 800;
   }
   .formContainer h2 {
     margin-top:30px
   }
   .formContainer .loginForm .loginButton {
     width: 25%;
+  }
+  .formContainer .loginForm .form-control {
+    height: 50px;
+  }
+  .paragraphButton {
+    background-color: rgba(255, 255, 255, 0) !important;
+    border: none !important;
+    color: black !important;
+    
   }
 }
