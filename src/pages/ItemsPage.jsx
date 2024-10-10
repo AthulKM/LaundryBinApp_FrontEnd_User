@@ -97,14 +97,16 @@ const ItemsPage = () => {
                 <Card.Text>Charge: ₹{item.charge}</Card.Text>
                 <div className="d-flex justify-content-between align-items-center">
                   <Button
+                    className='decButton'
                     variant="secondary"
                     onClick={() => handleDecrement(item._id)}
                     disabled={itemCounts[item._id] <= 0}
+                    
                   >
                     -
                   </Button>
                   <span>{itemCounts[item._id]}</span>
-                  <Button variant="primary" onClick={() => handleIncrement(item._id)}>+ Add</Button>
+                  <Button className='incButton' variant="primary" onClick={() => handleIncrement(item._id)}>+ Add</Button>
                 </div>
               </Card.Body>
             </Card>

@@ -1,11 +1,13 @@
 #root {
   width: 100%;
   height: 100vw;
-  
+  overflow: hidden !important;
 }
 
 body {
   background-color: lightblue !important;
+  overflow: hidden !important;
+  padding-top: 200px !important;
 }
 
 /* Margins and Padding */

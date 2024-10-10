@@ -1,0 +1,30 @@
+.instructions-container {
+    background-color: #f9f9f9;
+    border-radius: 50px;
+    padding: 20px;
+    margin-top: 150px !important;
+    width: 50% !important;
+  }
+  
+  .radio-option {
+    margin-left: 20px;
+  }
+  .radio-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+  
+  .water-icon, .softener-icon, .detergent-icon {
+    font-size: 50px;
+    color: #007bff;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  button {
+    width: 200px;
+  }
+  
