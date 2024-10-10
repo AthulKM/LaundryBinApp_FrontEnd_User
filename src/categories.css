@@ -11,8 +11,11 @@
     border-radius: 10px; /* Optional: rounded corners for a cleaner look */
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a slight depth */
+    transition: transform 0.2s ease;
   }
-  
+  .card:hover {
+    transform: translateY(-5px);
+  }
   .card-img-top {
     width: 100%;
     height: 180px; /* Control the height of the image */

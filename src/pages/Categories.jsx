@@ -28,7 +28,7 @@ const Categories = () => {
 
   return (
     <Container className="categories-container mt-5">
-      <h2 className="text-center">Our Services</h2>
+      {/* <h2 className="text-center">Choose a service : </h2> */}
       <Row>
         {categories.map((category) => (
           <Col key={category._id} xs={12} sm={6} md={4} lg={6} className="mb-4">
