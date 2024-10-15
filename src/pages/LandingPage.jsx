@@ -11,7 +11,7 @@ import Categories from './Categories.jsx';
 
 
 const LandingPage = ({ user }) => {
-  const { userName } = useUser(); // Access the user from context
+  const { userName, id } = useUser(); // Access the user from context
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -22,9 +22,9 @@ const LandingPage = ({ user }) => {
   return (
     
     <Container className=" landingContainer">
-      {userName ? <h2>Hello,<br /> {userName}! <br />Welcome back to LaundryBin.</h2>
+      {userName ? <h2>Hello,<br /> {userName}! <br />Welcome back to LaundryBin. </h2>
         
-        : <h2>Hello there! <br />Welcome to LaundryBin.</h2>}
+        : <h2>Hello there! <br />Welcome back to LaundryBin.</h2>}
       
       
       <Button variant="primary" onClick={() => navigate('/dashboard')}>

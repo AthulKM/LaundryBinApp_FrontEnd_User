@@ -10,6 +10,7 @@ import PasswordReset from '../pages/PasswordReset.jsx';
 import VerifyPasswordResetOTP from '../pages/VerifyPasswordResetOTP.jsx';
 import ItemsPage from '../pages/ItemsPage.jsx';
 import Instructions from '../pages/Instructions.jsx';
+import Summary from '../pages/Summary.jsx';
 
 
 const UserRoutes = () => {
@@ -25,6 +26,7 @@ const UserRoutes = () => {
       <Route path="/landing" element={<LandingPage />} />
       <Route path="/items" element={<ItemsPage />} />
       <Route path="/instructions" element={<Instructions />} />
+      <Route path="/summary" element={<Summary/>}/>
     </Routes>
 
   );

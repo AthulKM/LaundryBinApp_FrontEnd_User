@@ -9,7 +9,7 @@ import { useUser } from '../context/userContext.jsx';
 
 
 const VerifyOtp = ({ userId }) => {
-    const {id } = useUser();
+    const {id, userName } = useUser();
   const [otp, setOtp] = useState('');
   const [statusMessage, setStatusMessage] = useState(null);
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const VerifyOtp = ({ userId }) => {
       setStatusMessage({ success: response.data.message });
 
       // Navigate to another page (e.g., dashboard) upon successful OTP verification
-      navigate('/landing');
+      navigate('/landing',{ state: { userName} });
     } catch (error) {
       setStatusMessage({
         error: error.response ? error.response.data.message : 'OTP verification failed',

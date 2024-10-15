@@ -5,6 +5,10 @@ import axiosInstance from '../axios/axiosInstance';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const ItemsPage = () => {
+    const [receipt, setReceipt] = useState({
+        items: [],  // Array to hold the selected items with count and individual charges
+        overallCharge: 0  // Total charge for all items
+      });
     const [items, setItems] = useState([]);
     const [itemCounts, setItemCounts] = useState({});
     const [totalCharge, setTotalCharge] = useState(0);  // To track total charge
@@ -43,46 +47,104 @@ const ItemsPage = () => {
     }
   };
 
-  // Handle increment
-  const handleIncrement = (itemId) => {
+ // Handle increment
+const handleIncrement = (itemId) => {
     const updatedCounts = {
       ...itemCounts,
       [itemId]: itemCounts[itemId] + 1
     };
-
+  
     // Find the item being incremented
     const incrementedItem = items.find(item => item._id === itemId);
-
-    // Update total charge and total items
+  
+    // Calculate new total for the item
+    const updatedReceiptItems = receipt.items.map((item) => 
+      item._id === itemId 
+        ? { ...item, count: item.count + 1, totalCharge: (item.count + 1) * item.charge } 
+        : item
+    );
+  
+    // If item is not in receipt, add it
+    if (!receipt.items.some(item => item._id === itemId)) {
+      updatedReceiptItems.push({ 
+        _id: itemId, 
+        itemName: incrementedItem.itemName, 
+        count: 1, 
+        charge: incrementedItem.charge, 
+        totalCharge: incrementedItem.charge 
+      });
+    }
+  
+    // Update total charge and overall charge
     setTotalCharge(totalCharge + incrementedItem.charge);
     setTotalItems(totalItems + 1);
-    
+  
     setItemCounts(updatedCounts);
+    
+    // Update the receipt state
+    setReceipt({
+      ...receipt,
+      items: updatedReceiptItems,
+      overallCharge: totalCharge + incrementedItem.charge
+    });
   };
+  
 
   // Handle decrement
-  const handleDecrement = (itemId) => {
+  // Handle decrement
+const handleDecrement = (itemId) => {
     if (itemCounts[itemId] > 0) {
       const updatedCounts = {
         ...itemCounts,
         [itemId]: itemCounts[itemId] - 1
       };
-
+  
       // Find the item being decremented
       const decrementedItem = items.find(item => item._id === itemId);
-
+  
+      // Update receipt for the decremented item
+      const updatedReceiptItems = receipt.items
+        .map(item => 
+          item._id === itemId
+            ? { ...item, count: item.count - 1, totalCharge: (item.count - 1) * item.charge }
+            : item
+        )
+        .filter(item => item.count > 0);  // Remove the item if count goes to 0
+  
       // Update total charge and total items
       setTotalCharge(totalCharge - decrementedItem.charge);
       setTotalItems(totalItems - 1);
-
+  
       setItemCounts(updatedCounts);
+  
+      // Update the receipt state
+      setReceipt({
+        ...receipt,
+        items: updatedReceiptItems,
+        overallCharge: totalCharge - decrementedItem.charge
+      });
     }
   };
+  
 
   // Handle the proceed action to redirect to the next page
-  const handleProceed = () => {
-    navigate('/instructions');  // Redirect to the checkout or next page
-  };
+    const handleProceed = () => {
+        const receipt = {
+            items: items.filter(item => itemCounts[item._id] > 0).map(item => ({
+              name: item.itemName,
+              count: itemCounts[item._id],
+              charge: item.charge * itemCounts[item._id],
+            })),
+            totalCharge,
+        };
+        
+        navigate('/instructions');  // Redirect to the checkout or next page
+        console.log(receipt);
+    };
+    useEffect(() => {
+        // Store receipt in localStorage whenever it changes
+        localStorage.setItem('receipt', JSON.stringify(receipt));
+      }, [receipt]);
 
   return (
     <Container>

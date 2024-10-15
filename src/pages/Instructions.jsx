@@ -3,13 +3,17 @@ import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import axiosInstance from '../axios/axiosInstance';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Instructions.css';  // Custom CSS for further styling
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Instructions = () => {
+    const location = useLocation();
+  const { receipt } = location.state || {};  // Get receipt from location state
   const [water, setWater] = useState('Cold');
   const [fabricSoftener, setFabricSoftener] = useState('Yes');
   const [detergent, setDetergent] = useState('Scented');
   const [notes, setNotes] = useState('');
-  const [message, setMessage] = useState('');
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
   const handleWaterChange = (e) => setWater(e.target.value);
   const handleFabricSoftenerChange = (e) => setFabricSoftener(e.target.value);
@@ -27,7 +31,8 @@ const Instructions = () => {
         detergent,
         notes
       });
-      setMessage('Instructions saved successfully!');
+        setMessage('Instructions saved successfully!');
+        navigate('/summary', { state: { receipt } });
     } catch (error) {
       console.error('Error saving instructions:', error);
       setMessage('Failed to save instructions.');
