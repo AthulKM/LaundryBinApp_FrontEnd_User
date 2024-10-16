@@ -22,9 +22,9 @@ const LandingPage = ({ user }) => {
   return (
     
     <Container className=" landingContainer">
-      {userName ? <h2>Hello,<br /> {userName}! <br />Welcome back to LaundryBin. </h2>
+      {userName ? <h2>Hello,<br /> {userName}! <br />Welcome to LaundryBin. </h2>
         
-        : <h2>Hello there! <br />Welcome back to LaundryBin.</h2>}
+        : <h2>Hello there! <br />Welcome to LaundryBin.</h2>}
       
       
       <Button variant="primary" onClick={() => navigate('/dashboard')}>

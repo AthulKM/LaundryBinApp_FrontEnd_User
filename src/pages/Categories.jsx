@@ -19,7 +19,7 @@ const Categories = () => {
     };
 
     fetchCategories();
-  }, []);
+  }, [categories]);
     
     // Handle card click to navigate to ItemsPage
   const handleCardClick = (categoryName) => {
