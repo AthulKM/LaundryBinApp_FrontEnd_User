@@ -21,7 +21,7 @@ const ItemsPage = () => {
 
   useEffect(() => {
     fetchItems();
-  }, [items]);
+  }, []);
 
   const fetchItems = async () => {
     try {

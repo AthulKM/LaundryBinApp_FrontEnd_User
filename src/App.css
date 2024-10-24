@@ -5,8 +5,8 @@
 }
 
 body {
-  background-color: lightblue !important;
-  /* overflow: hidden !important; */
+  background-color: rgba(236, 243, 246, 1)!important;
+   /* overflow: hidden !important; */
   padding-top: 120px !important;
   height: 100%;
 }

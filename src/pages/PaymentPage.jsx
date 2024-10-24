@@ -5,6 +5,8 @@ import { Button, Form } from 'react-bootstrap';
 import axiosInstance from '../axios/axiosInstance';
 import '../Payment.css';
 
+
+
 const PaymentPage = ({ totalAmount }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -43,7 +45,7 @@ const PaymentPage = ({ totalAmount }) => {
 
   return (
     <Form onSubmit={handleSubmit} className='payment-form'>
-  <h5>Choose a Payment Method</h5>
+  <h5>{paymentMethod}</h5>
   
   <div className='payment-method-radio'>
     <Form.Check 

@@ -7,12 +7,15 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../Summary.css';  // Add custom styling here
 import AddAddressModal from '../features/AddAddressModal'; 
-
 import axiosInstance from '../axios/axiosInstance';
 import { useUser } from '../context/userContext';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe('pk_test_51QA8Hy2KS0ihxQVnfB2DUdzqXXQol1gfxGkmTsRHls2u8uD1JANFhVIrzrO14wSxMbwZmnJlpnXqTg3nmXzqvWsI009lFvq15x');
 
 
 const Summary = () => {
+    
     
     const [receipt, setReceipt] = useState([]);
     const [pickupDate, setPickupDate] = useState(null);
@@ -20,7 +23,7 @@ const Summary = () => {
   const [selectedAddress, setSelectedAddress] = useState('');
   const [deliveryMethod, setDeliveryMethod] = useState('address');
   const [couponCode, setCouponCode] = useState('');
-    const [paymentMethod, setPaymentMethod] = useState('COD');
+    const [paymentMethod, setPaymentMethod] = useState('card');
     const [addresses, setAddresses] = useState([]);
     const [showAddAddressModal, setShowAddAddressModal] = useState(false); 
 
@@ -48,7 +51,7 @@ const Summary = () => {
           setReceipt(JSON.parse(storedReceipt));
         }
         console.log(receipt);
-      }, [receipt]);
+      }, []);
       
 
 
@@ -85,6 +88,29 @@ const Summary = () => {
     slidesToShow: 3,
     slidesToScroll: 1
   };
+    
+    
+    // payment 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const stripe = await stripePromise;
+    
+        // Call the backend to create a checkout session
+        const { data } = await axiosInstance.post('/user/create-checkout-session', {
+          paymentMethod,
+          amount: receipt.overallCharge * 100, // In smallest currency unit (e.g., paise for INR)
+        });
+    
+        // Redirect to Stripe's Checkout page
+        const result = await stripe.redirectToCheckout({
+          sessionId: data.id,
+        });
+    
+        if (result.error) {
+          console.error(result.error.message);
+        }
+      };
     
   
 
@@ -227,27 +253,32 @@ const Summary = () => {
       <Row className="mb-3">
         <Col>
           <h4>Payment Method</h4>
-          <Form.Check 
-            type="radio" 
-            label="Cash on Delivery (COD)" 
-            value="COD" 
-            checked={paymentMethod === 'COD'} 
-            onChange={handlePaymentMethodChange} 
-          />
-          <Form.Check 
-            type="radio" 
-            label="Card" 
-            value="Card" 
-            checked={paymentMethod === 'Card'} 
-            onChange={handlePaymentMethodChange} 
-          />
-          <Form.Check 
-            type="radio" 
-            label="UPI" 
-            value="UPI" 
-            checked={paymentMethod === 'UPI'} 
-            onChange={handlePaymentMethodChange} 
-          />
+          <Form onSubmit={handleSubmit}>
+      
+      <Form.Check 
+        type="radio" 
+        label="Cash on Delivery (COD)" 
+        value="COD" 
+        checked={paymentMethod === 'COD'} 
+        onChange={handlePaymentMethodChange} 
+      />
+      <Form.Check 
+        type="radio" 
+        label="card" 
+        value="card" 
+        checked={paymentMethod === 'card'} 
+        onChange={handlePaymentMethodChange} 
+      />
+      <Form.Check 
+        type="radio" 
+        label="UPI" 
+        value="UPI" 
+        checked={paymentMethod === 'UPI'} 
+        onChange={handlePaymentMethodChange} 
+      />
+
+      <Button type="submit" disabled={paymentMethod === 'COD'}>Pay Now</Button>
+    </Form>
         </Col>
       </Row>
     </Container>

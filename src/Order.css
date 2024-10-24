@@ -1,0 +1,117 @@
+/* Order.css */
+
+/* Main container */
+.order-container {
+    width: 30%;
+   
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Left section: category and date */
+  .categoryAndDate {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .category-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .created-date {
+    font-size: 25px;
+    color: #666;
+    
+  }
+  
+  /* Right section: order details */
+  .order-details {
+    padding-left: 20px;
+  }
+  .categoryAndStatus {
+    display: flex;
+    flex-direction: row;
+    border-bottom: dotted 4px rgb(230, 224, 224);
+     
+  }
+  .categoryAndStatus h5 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .categoryAndStatus p {
+    font-size: 14px;
+    color: #888;
+    align-content: center;
+    margin-right: 0px !important;
+  }
+  
+  /* Items and counts */
+  .itemsAndCounts {
+    margin-top: 15px;
+  }
+  
+  .itemsAndCounts h6 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .itemsAndCounts ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .itemsAndCounts ul li {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 20px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Tracking and rating buttons */
+  .trackingAndRating {
+    margin-top: 20px;
+  }
+  
+  .trackingAndRating .btn {
+    margin-right: 10px;
+  }
+  
+  .trackingAndRating .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .trackingAndRating .btn-success {
+    background-color: #28a745;
+    border: none;
+  }
+  
+  .trackingAndRating .btn-warning {
+    background-color: #ffc107;
+    border: none;
+  }
+  
+  /* Order cancellation page */
+
+.status-section, .pickup-section, .delivery-section, .receipt-section, .button-section {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-header, .modal-footer {
+    background-color: #f8f9fa;
+}

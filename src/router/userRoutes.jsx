@@ -12,6 +12,17 @@ import ItemsPage from '../pages/ItemsPage.jsx';
 import Instructions from '../pages/Instructions.jsx';
 import Summary from '../pages/Summary.jsx';
 import PaymentPage from '../pages/PaymentPage.jsx';
+import Order from '../pages/Order.jsx';
+import OrderCancelPage from '../pages/OrderCancelPage.jsx';
+import Profile from '../pages/Profile.jsx';
+import OrderHistory from '../pages/OrderHistory.jsx';
+import ContactUs from '../pages/ContactUs.jsx';
+import Dashboard from '../pages/Dashboard.jsx';
+import Address from '../pages/Address.jsx';
+import Faq from '../pages/Faq.jsx';
+import AboutUs from '../pages/AboutUs.jsx';
+import Reviews from '../pages/Reviews.jsx';
+import PrivacyPolicy from '../pages/PrivacyPolicy.jsx';
 
 
 const UserRoutes = () => {
@@ -29,7 +40,18 @@ const UserRoutes = () => {
       <Route path="/instructions" element={<Instructions />} />
       <Route path="/summary" element={<Summary />} />
       <Route path="/payment" element={<PaymentPage />}/>
-          </Routes>
+      <Route path="/order" element={<Order />} />  
+      <Route path="/cancel-order" element={<OrderCancelPage/>}/>
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/order-history" element={<OrderHistory />} />
+      <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/address" element={<Address />} />
+      <Route path="/faq" element={<Faq />} />
+      <Route path="/about-us" element={<AboutUs />} />
+      <Route path="/reviews" element={<Reviews />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+    </Routes>
 
   );
 };
