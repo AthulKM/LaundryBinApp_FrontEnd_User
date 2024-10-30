@@ -5,38 +5,54 @@ import axiosInstance from '../axios/axiosInstance.js';
 import { Button, Form as BootstrapForm, Container, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/userContext.jsx';
-
+import { useAuth } from '../context/AuthContext.jsx';
 
 
 const VerifyOtp = ({ userId }) => {
-    const {id, userName } = useUser();
+  const { login, setUser, setAuthToken } = useAuth();
+    const {id, userName, userData, setUserData} = useUser();
   const [otp, setOtp] = useState('');
   const [statusMessage, setStatusMessage] = useState(null);
   const navigate = useNavigate();
 
-  const initialValues = { otp: 0 };
+  const initialValues = { otp: '' };
 
   const validationSchema = Yup.object({
-    otp: Yup.string().required('OTP is required'),
+    otp: Yup.number().required('OTP is required').typeError('OTP must be a number'),
   });
 
   const handleVerifyOTP = async (values, { setSubmitting }) => {
-      try {
+    try {
       const response = await axiosInstance.post('/user/verify-otp', {
         userId: id,
         otp: values.otp,
       });
+  
+      // Extract token and user data from the response
+      const { token, data: user } = response.data;
+  
+      // Update status, user, and token in state
       setStatusMessage({ success: response.data.message });
-
-      // Navigate to another page (e.g., dashboard) upon successful OTP verification
-      navigate('/landing',{ state: { userName} });
+      setUser(user);
+      setAuthToken(token);
+      login(user,token);
+  
+      // Save to local storage
+      localStorage.setItem('userToken', token);
+      localStorage.setItem('userData', JSON.stringify(user));
+  
+      // Navigate to the landing page with user data
+      navigate('/landing', { state: { user, id } });
+      
     } catch (error) {
       setStatusMessage({
         error: error.response ? error.response.data.message : 'OTP verification failed',
       });
+    } finally {
+      setSubmitting(false);
     }
-    setSubmitting(false);
   };
+  
 
   return (
     <Container className="formContainer">

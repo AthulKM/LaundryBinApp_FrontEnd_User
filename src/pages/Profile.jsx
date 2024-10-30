@@ -1,15 +1,67 @@
-import React from 'react';
-import { Button, Container, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Button, Container, Row, Col, Modal, Form } from 'react-bootstrap';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../Profile.css'; 
 import { FaArrowRight, FaEdit } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTshirt } from '@fortawesome/free-solid-svg-icons';  // Shirt icon
 
+import axiosInstance from '../axios/axiosInstance';
+import { useAuth } from '../context/AuthContext';
 
 
 const Profile = () => {
   const navigate = useNavigate();
+  
+  const { user, updateUser } = useAuth();
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    username: user?.username||'',
+    profilePicture: user?.profilePicture||''
+  });
+
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        username: user.username,
+        profilePicture: user.profilePicture
+      });
+    }
+  }, [user]);
+
+  const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formDataToSend = new FormData();
+    formDataToSend.append("username", formData.username);
+    if (formData.profilePicture) {
+      formDataToSend.append("profilePicture", formData.profilePicture);
+    }
+  
+    try {
+      const response = await axiosInstance.put(`/user/${user._id}`, formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      if (response.data.status === "Success") {
+        updateUser(formData);
+        handleClose();
+      }
+    } catch (error) {
+      console.error("Error updating user data:", error);
+    }
+  };
+
+
+  
 
   // Handler for button navigation
   const handleNavigation = (path) => {
@@ -18,23 +70,25 @@ const Profile = () => {
 
   return (
     <Container className="profile-container">
-      <Row className="mb-4">
+      {user ? (
+        <Row className="mb-4">
         <Col className="text-center">
           <img 
-            src="/path-to-user-photo.jpg" 
+            src={user.profilePicture} 
             alt="User Profile" 
             className="profile-photo" 
           />
         </Col>
         <Col>
-            <h2>User Name</h2>
-            <p>Contact Number: +91XXXXXXXXXX</p>
-            <Button variant="primary" className='flex-row-spaceBetween' onClick={() =>      handleNavigation('/edit-profile')}>
+          <h2>{user.username }</h2>
+          <p>{ user.phoneNumber}</p>
+            <Button variant="primary" className='flex-row-spaceBetween' onClick={handleShow}>
                 Edit Profile 
                 <FaEdit className="mr-2" /> {/* Edit icon */}
             </Button>
         </Col>
       </Row>
+      ):(<p>Hello guest, Please log in to view your profile.</p>)}
 
       <Row className="mb-3">
         <Col>
@@ -115,6 +169,43 @@ const Profile = () => {
           </Button>
         </Col>
       </Row>
+
+
+      {/* Modal for editing profile */}
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Profile</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formUsername">
+              <Form.Label>Username</Form.Label>
+              <Form.Control 
+                type="text" 
+                name="username" 
+                value={formData.username} 
+                onChange={handleChange} 
+                required 
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formProfilePicture">
+              <Form.Label>Profile Picture URL</Form.Label>
+              <Form.Control 
+                type="file" 
+                name="profilePicture" 
+                value={formData.profilePicture} 
+                onChange={handleChange} 
+                accept="image/*" //Accepts only image files
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+              Save Changes
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 };

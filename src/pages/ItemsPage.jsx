@@ -14,8 +14,8 @@ const ItemsPage = () => {
     const [totalCharge, setTotalCharge] = useState(0);  // To track total charge
     const [totalItems, setTotalItems] = useState(0);    // To track total number of items added
     const location = useLocation();  // Get the state passed from Categories
-    const { categoryName } = location.state || {};  // Destructure categoryName from state
-
+    const { categoryName, userName } = location.state || {};  // Destructure categoryName from state
+    
 
     const navigate = useNavigate();
 
@@ -150,6 +150,7 @@ const handleDecrement = (itemId) => {
     <Container>
       <h1 className="text-center my-4">{categoryName}</h1>
       <Row>
+        <h2>{ userName}, add items into your laundry bin : </h2>
         {items.map((item) => (
           <Col key={item._id} xs={12} md={4} lg={3} className="mb-4">
             <Card className="item-card">

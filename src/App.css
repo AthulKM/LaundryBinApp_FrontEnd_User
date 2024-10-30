@@ -55,18 +55,16 @@ body {
 }
 
 /* Slick */
+.offerSlider,
+.slick-slide,
+.offerSlideContent img {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
 
-.slick-slider {
-  background-color:rgba(127, 255, 212,0.3) ;
-  
-  border-radius: 30px;
-  display: flex;
-  align-content: center;
-  
-}
-.slick-slide {
-  align-items: center;
-}
+
 
 /* Register component */
 .registrationContainer {
@@ -105,23 +103,9 @@ body {
   .landingContainer {
     padding: 30px 50px !important;
   }
-  .slick-slider {
-    padding: 20px 30px !important;
-    height: 200px;
-  }
-  .offerSlideContent {
-    display: flex !important;
-    
-  }
-  .offerSlideContent img {
-    margin: 0 auto;
-    
-  }
-  .slick-prev:before, .slick-next:before {
   
-    font-size: 25px !important;
   
-  }
+  
 
 }
 
@@ -141,23 +125,8 @@ body {
   .landingContainer {
     padding: 30px 50px !important;
   }
-  .slick-slider {
-    padding: 20px 30px !important;
-    height: 200px;
-  }
-  .offerSlideContent {
-    display: flex !important;
-    
-  }
-  .offerSlideContent img {
-    margin: 0 auto;
-    
-  }
-  .slick-prev:before, .slick-next:before {
   
-      font-size: 35px !important;
-    
-  }
+  
 
 }
 
@@ -177,24 +146,7 @@ body {
   .landingContainer {
     padding: 30px 50px !important;
   }
-  .slick-slider {
-    padding: 20px 30px !important;
-    height: 200px;
-  }
-  .offerSlideContent {
-    display: flex !important;
-    
-  }
-  .offerSlideContent img {
-    margin: 0 auto;
-    
-    
-  }
-  .slick-prev:before, .slick-next:before {
   
-    font-size: 40px !important;
-  
-  }
   
 }
 
@@ -214,24 +166,7 @@ body {
   .landingContainer {
     padding: 30px 50px !important;
   }
-  .slick-slider {
-    padding: 20px 30px !important;
-    height: 200px;
-  }
-  .offerSlideContent {
-    display: flex !important;
-    
-  }
-  .offerSlideContent img {
-    margin: 0 auto;
-    
-    
-  }
-  .slick-prev:before, .slick-next:before {
   
-    font-size: 50px !important;
-  
-  }
 
   .appName h1 {
     position: absolute;
@@ -281,24 +216,7 @@ body {
   .landingContainer {
     padding: 30px 50px !important;
   }
-  .slick-slider {
-    padding: 20px 30px !important;
-    height: 200px;
-  }
-  .offerSlideContent {
-    display: flex !important;
-    
-  }
-  .offerSlideContent img {
-    margin: 0 auto;
-    
-    
-  }
-  .slick-prev:before, .slick-next:before {
   
-    font-size: 60px !important;
-  
-  }
 
   .appName h1 {
     position: absolute;
@@ -368,41 +286,7 @@ body {
     padding: 50px 50px !important;
     margin-top: 20px !important;
   }
-  .slick-slider {
-    padding: 20px 30px !important;
-    height: 350px;
-  }
-  .offerSlideContent {
-    height: 100% !important;
-    display: flex !important;
-    position: relative;
-    align-items: center !important;
-    margin: 0 auto;
-    
-  }
-  .offerSlideContent img {
-    margin: 0 auto;
-    
-    
-    
-  }
   
-  .slick-prev:before, .slick-next:before {
-  
-    font-size: 70px !important;
-    position: absolute;
-    top:0;
-    
-  
-  }
-  .slick-prev:before {
-    left: 50px;
-  }
-  .slick-next:before {
-    left: -100px;
-  }
-  
-
   .appName h1 {
     position: absolute;
     left: 200px;
@@ -415,9 +299,6 @@ body {
     width: 700px !important;
 
     /* background-color: rgba(81, 193, 245, 1); */
-    
-    
-        
     padding: 30px;
     display: flex;
     flex-direction: column;

@@ -3,8 +3,10 @@ import axiosInstance from '../axios/axiosInstance.js';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import '../categories.css';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/userContext.jsx';
 
 const Categories = () => {
+  const { userName, id } = useUser();
     const [categories, setCategories] = useState([]);
     const navigate = useNavigate();
 
@@ -23,7 +25,7 @@ const Categories = () => {
     
     // Handle card click to navigate to ItemsPage
   const handleCardClick = (categoryName) => {
-    navigate('/items', { state: { categoryName }});  // Pass categoryName as state
+    navigate('/items', { state: { categoryName, id, userName  }});  // Pass categoryName as state
   };
 
   return (
