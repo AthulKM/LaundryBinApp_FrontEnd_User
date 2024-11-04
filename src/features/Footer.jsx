@@ -1,14 +1,15 @@
 import React from 'react';
 import { Row, Col, Button, Container } from 'react-bootstrap';
+import '../footer.css';
 
 
 const Footer = () => {
   return (
-    <div>
+    <div className='footer'>
         <Container className='footer-container'>
               <Row className='footer-content'>
                   <Col className='contact'>
-                      <h4>Adddress</h4>
+                      <h4 className='d-flex centered'>Adddress</h4>
                       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero ab nihil esse earum iusto repellendus molestiae magnam quam voluptatem necessitatibus. Ipsum quia mollitia optio doloremque excepturi maiores pariatur sit perferendis?</p>
                       <div className='social-links'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4267B2">
@@ -29,10 +30,10 @@ const Footer = () => {
                       </div>
                   </Col>
                   <Col className='useful-links'>
-                    <h4 > Useful links</h4>
+                    <h4 className='d-flex centered'> Useful links</h4>
                   </Col>
                   <Col className='more'>
-                    <h4> More</h4>
+                    <h4 className='d-flex centered'> More</h4>
                   </Col>
               </Row> 
 

@@ -23,34 +23,36 @@ import Faq from '../pages/Faq.jsx';
 import AboutUs from '../pages/AboutUs.jsx';
 import Reviews from '../pages/Reviews.jsx';
 import PrivacyPolicy from '../pages/PrivacyPolicy.jsx';
+import NotificationPage from '../pages/NotificationPage.jsx';
 
 
 const UserRoutes = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/verify-otp" element={<VerifyOtp />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/verify-passwordreset-otp" element={ <VerifyPasswordResetOTP/>} />
-        <Route path="/password-reset" element={ <PasswordReset/>} />
-      
-      <Route path="/landing" element={<LandingPage />} />
-      <Route path="/items" element={<ItemsPage />} />
-      <Route path="/instructions" element={<Instructions />} />
-      <Route path="/summary" element={<Summary />} />
-      <Route path="/payment" element={<PaymentPage />}/>
-      <Route path="/order" element={<Order />} />  
-      <Route path="/cancel-order" element={<OrderCancelPage/>}/>
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/order-history" element={<OrderHistory />} />
+      <Route path="/about-us" element={<AboutUs />} />
+      <Route path="/address" element={<Address />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/address" element={<Address />} />
       <Route path="/faq" element={<Faq />} />
-      <Route path="/about-us" element={<AboutUs />} />
-      <Route path="/reviews" element={<Reviews />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/instructions" element={<Instructions />} />
+      <Route path="/items" element={<ItemsPage />} />
+      <Route path="/landing" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/notifications" element={<NotificationPage/>} />
+      <Route path="/order" element={<Order />} /> 
+      <Route path="/cancel-order" element={<OrderCancelPage/>}/>
+      <Route path="/order-history" element={<OrderHistory />} />
+      <Route path="/password-reset" element={ <PasswordReset/>} />
+      <Route path="/payment" element={<PaymentPage />}/>
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/reviews" element={<Reviews />} />
+      <Route path="/summary" element={<Summary />} />
+      <Route path="/verify-otp" element={<VerifyOtp />} />
+      <Route path="/verify-passwordreset-otp" element={ <VerifyPasswordResetOTP/>} />
+
     </Routes>
 
   );

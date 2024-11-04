@@ -9,6 +9,7 @@ body {
    /* overflow: hidden !important; */
   padding-top: 120px !important;
   height: 100%;
+  position: relative;
 }
 
 /* Margins and Padding */

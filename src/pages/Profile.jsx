@@ -16,7 +16,8 @@ const Profile = () => {
   const { user, updateUser } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
-    username: user?.username||'',
+    username: user?.username || '',
+    phoneNumber: user?.phoneNumber||'',
     profilePicture: user?.profilePicture||''
   });
 
@@ -24,6 +25,7 @@ const Profile = () => {
     if (user) {
       setFormData({
         username: user.username,
+        phoneNumber:user.phoneNumber,
         profilePicture: user.profilePicture
       });
     }

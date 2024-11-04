@@ -38,6 +38,9 @@ const NavBar = () => {
                 {/* <li><Link to="/contact">Contact</Link></li> */}
             {isAuthenticated ? (
                 <ul className="navbar-links">
+                    <li><button variant="primary" onClick={() => navigate('/notifications')}>
+                    Notifications
+                    </button></li>
                     <li><button variant="primary" onClick={() => navigate('/dashboard')}>
                     Dashboard
                     </button></li>
