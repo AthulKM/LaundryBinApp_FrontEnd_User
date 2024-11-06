@@ -1,4 +1,8 @@
 
+.profilePage {
+  margin-top: 100px;
+}
+
 .flex-row-spaceBetween {
     display: flex;
     flex-direction: row;

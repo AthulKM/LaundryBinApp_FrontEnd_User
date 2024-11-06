@@ -24,6 +24,7 @@ import AboutUs from '../pages/AboutUs.jsx';
 import Reviews from '../pages/Reviews.jsx';
 import PrivacyPolicy from '../pages/PrivacyPolicy.jsx';
 import NotificationPage from '../pages/NotificationPage.jsx';
+import OrderTracking from '../pages/OrderTracking.jsx';
 
 
 const UserRoutes = () => {
@@ -43,6 +44,7 @@ const UserRoutes = () => {
       <Route path="/order" element={<Order />} /> 
       <Route path="/cancel-order" element={<OrderCancelPage/>}/>
       <Route path="/order-history" element={<OrderHistory />} />
+      <Route path="/order-tracking" element={<OrderTracking />} />
       <Route path="/password-reset" element={ <PasswordReset/>} />
       <Route path="/payment" element={<PaymentPage />}/>
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />

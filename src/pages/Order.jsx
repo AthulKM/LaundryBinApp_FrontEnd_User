@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import '../Order.css';  // Assuming you'll style it separately
+import { useNavigate } from 'react-router-dom';
+
 
 const Order = ({ order }) => {
 //   const { categoryImage, createdDate, categoryName, orderStatus, receipt } = order;
@@ -13,6 +15,7 @@ const Order = ({ order }) => {
         "name": "Shirt",
         "count": 5
     }];
+  const navigate = useNavigate();
         
     
     
@@ -22,7 +25,8 @@ const Order = ({ order }) => {
   const isDetailsActive = orderStatus === 'Canceled';
 
   return (
-    <Container className="order-container">
+    <div className='orderPage'>
+      <Container className="order-container">
       <Row>
         {/* Left Section */}
         <Col md={4} className="categoryAndDate">
@@ -60,12 +64,14 @@ const Order = ({ order }) => {
           {/* Tracking and Rating Buttons */}
           <div className="trackingAndRating">
             <Button className="mr-2" variant="primary" disabled={!isDetailsActive}>Details</Button>
-            {isTrackingVisible && <Button className="mr-2" variant="success">Tracking</Button>}
+              {isTrackingVisible && <Button className="mr-2"
+                onClick={() => { navigate('/order-tracking') } } variant="success">Tracking</Button>}
             {isAddRatingVisible && <Button variant="warning">Add Rating</Button>}
           </div>
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 

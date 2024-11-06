@@ -20,9 +20,10 @@ const Profile = () => {
     phoneNumber: user?.phoneNumber||'',
     profilePicture: user?.profilePicture||''
   });
-
+  
   useEffect(() => {
     if (user) {
+      
       setFormData({
         username: user.username,
         phoneNumber:user.phoneNumber,
@@ -71,7 +72,8 @@ const Profile = () => {
   };
 
   return (
-    <Container className="profile-container">
+    <div className='profilePage'>
+      <Container className="profile-container">
       {user ? (
         <Row className="mb-4">
         <Col className="text-center">
@@ -209,6 +211,8 @@ const Profile = () => {
         </Modal.Body>
       </Modal>
     </Container>
+    </div>
+    
   );
 };
 

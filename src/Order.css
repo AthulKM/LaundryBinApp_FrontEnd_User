@@ -1,5 +1,7 @@
 /* Order.css */
-
+.orderPage {
+  margin-top: 100px;
+}
 /* Main container */
 .order-container {
     width: 30%;

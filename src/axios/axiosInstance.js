@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 // Interceptor to change the baseURL dynamically based on the request URL
 axiosInstance.interceptors.request.use((config) => {
   // Check if the request URL includes 'user' or 'category' or 'items' or 'instructions'
-  if (config.url.includes('/user') || config.url.includes('/items') || config.url.includes('/instructions') || config.url.includes('/orders') || config.url.includes('/reviews') || config.url.includes('/notifications')) {
+  if (config.url.includes('/user') || config.url.includes('/items') || config.url.includes('/instructions') || config.url.includes('/orders') || config.url.includes('/reviews') || config.url.includes('/notifications') || config.url.includes('/orderTracking')) {
     config.baseURL = 'http://localhost:8004/api/'; 
   } else if (config.url.includes('/category')) {
     config.baseURL = 'http://localhost:8003/api/'; 
