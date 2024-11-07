@@ -9,7 +9,7 @@ const SlickSliderOffers = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
@@ -17,10 +17,10 @@ const SlickSliderOffers = () => {
 
   return (
     <div className="offerSlider">
-      <Slider {...settings}>
-        <div className="offerSlideContent"><img src="src/assets/images/image1_f50.png" alt="Offer 1" /></div>
-        <div className="offerSlideContent"><img src="src/assets/images/image2_f50.png" alt="Offer 2" /></div>
-        <div className="offerSlideContent"><img src="src/assets/images/image3_f50.png" alt="Offer 3" /></div>
+      <Slider {...settings} className="offerSlideContent">
+        <img className='h-100 w-100' src="src/assets/images/image1_f50.png" alt="Offer 1" />
+        <img className='h-100 w-100' src="src/assets/images/image2_f50.png" alt="Offer 2" />
+        <img src="src/assets/images/image3_f50.png" alt="Offer 3" />
       </Slider>
     </div>
   );
