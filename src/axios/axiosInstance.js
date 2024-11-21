@@ -4,7 +4,7 @@ import axios from 'axios';
 // Create the axios instance with a default baseURL and other configurations
 const axiosInstance = axios.create({
   baseURL: 'https://laundrybinapp-backend.onrender.com/api/', // Default base URL
-  timeout: 30000,
+  // timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },

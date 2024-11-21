@@ -40,9 +40,9 @@ const App = () => {
           
           <NavBar/>
             <UserRoutes />
-            <Footer/>
+            
           </Elements>
-          
+          <Footer/>
       </Router>
     </UserProvider>
     </AuthProvider>
