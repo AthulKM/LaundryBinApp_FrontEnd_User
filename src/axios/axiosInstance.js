@@ -3,8 +3,8 @@ import axios from 'axios';
 
 // Create the axios instance with a default baseURL and other configurations
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8003/api/', // Default base URL
-  timeout: 5000,
+  baseURL: 'https://laundrybinapp-backend.onrender.com/api/', // Default base URL
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -14,9 +14,9 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use((config) => {
   // Check if the request URL includes 'user' or 'category' or 'items' or 'instructions'
   if (config.url.includes('/user') || config.url.includes('/items') || config.url.includes('/instructions') || config.url.includes('/orders') || config.url.includes('/reviews') || config.url.includes('/notifications') || config.url.includes('/orderTracking')) {
-    config.baseURL = 'http://localhost:8004/api/'; 
+    config.baseURL = 'https://laundrybin-backend-user.onrender.com/api/'; 
   } else if (config.url.includes('/category')) {
-    config.baseURL = 'http://localhost:8003/api/'; 
+    config.baseURL = 'https://laundrybinapp-backend.onrender.com/api/'; 
   }
 
   // Always return the config object
