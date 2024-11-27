@@ -10,7 +10,14 @@ const Footer = () => {
               <Row className='footer-content'>
                   <Col className='contact'>
                       <h4 className='d-flex centered'>Adddress</h4>
-                      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero ab nihil esse earum iusto repellendus molestiae magnam quam voluptatem necessitatibus. Ipsum quia mollitia optio doloremque excepturi maiores pariatur sit perferendis?</p>
+                      <p>Calicut: Govt. Cyberpark
+KSITIL Special Economic Zone
+Nellikkode, Calicut
+              Kerala - 673016</p>
+            <p>Chandigarh: World Tech Tower
+Opposite SBI Headquarters
+Sector-67, Mohali
+Punjab - 160062</p>
                       <div className='social-links'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4267B2">
                             <path d="M22.675 0H1.325C.593 0 0 .6 0 1.342v21.317C0 23.4.593 24 1.325 24H12.82v-9.295H9.692v-3.622h3.128V8.413c0-3.1 1.89-4.788 4.648-4.788 1.325 0 2.464.1 2.794.144v3.24l-1.917.001c-1.504 0-1.794.715-1.794 1.76v2.309h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.325-.6 1.325-1.342V1.342C24 .6 23.405 0 22.675 0z"/>
@@ -30,10 +37,26 @@ const Footer = () => {
                       </div>
                   </Col>
                   <Col className='useful-links'>
-                    <h4 className='d-flex centered'> Useful links</h4>
+            <h4 className='d-flex centered'> Useful links</h4>
+            <p className='d-flex centered' >About Us <br />
+Careers <br />
+Blog <br />
+FAQ <br />
+Contact Us</p>
                   </Col>
                   <Col className='more'>
-                    <h4 className='d-flex centered'> More</h4>
+            <h4 className='d-flex centered'> More</h4>
+            <p>Digital Services
+
+Mobile App Development
+Web Development
+Web Design
+Digital Marketing
+Quality Assurance
+Enterprise Automation
+Graphic Design
+2D & 3D Animation
+Data Analytics</p>
                   </Col>
               </Row> 
 
