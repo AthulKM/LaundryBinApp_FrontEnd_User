@@ -12,7 +12,7 @@ import { AuthProvider, useAuth } from './context/AuthContext.jsx';
 
 import Footer from './features/Footer.jsx';
 import './App.css';
-import './footer.css';
+
 
 const stripePromise = loadStripe('pk_test_51QA8Hy2KS0ihxQVnfB2DUdzqXXQol1gfxGkmTsRHls2u8uD1JANFhVIrzrO14wSxMbwZmnJlpnXqTg3nmXzqvWsI009lFvq15x');// Replace with your actual publishable key
 
@@ -42,7 +42,7 @@ const App = () => {
             <UserRoutes />
             
           </Elements>
-          <Footer/>
+          
       </Router>
     </UserProvider>
     </AuthProvider>

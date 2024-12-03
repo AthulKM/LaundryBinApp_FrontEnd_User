@@ -6,7 +6,7 @@ import '../footer.css';
 const Footer = () => {
   return (
     <div className='footer'>
-        <Container className='footer-container'>
+        <div className='footer-container'>
               <Row className='footer-content'>
                   <Col className='contact'>
                       <h4 className='d-flex centered'>Adddress</h4>
@@ -39,28 +39,28 @@ Punjab - 160062</p>
                   <Col className='useful-links'>
             <h4 className='d-flex centered'> Useful links</h4>
             <p className='d-flex centered' >About Us <br />
-Careers <br />
-Blog <br />
-FAQ <br />
-Contact Us</p>
+                                            Careers <br />
+                                            Blog <br />
+                                            FAQ <br />
+                                            Contact Us</p>
                   </Col>
                   <Col className='more'>
             <h4 className='d-flex centered'> More</h4>
             <p>Digital Services
 
-Mobile App Development
-Web Development
-Web Design
-Digital Marketing
-Quality Assurance
-Enterprise Automation
-Graphic Design
-2D & 3D Animation
-Data Analytics</p>
+                Mobile App Development
+                Web Development
+                Web Design
+                Digital Marketing
+                Quality Assurance
+                Enterprise Automation
+                Graphic Design
+                2D & 3D Animation
+                Data Analytics</p>
                   </Col>
               </Row> 
 
-        </Container>
+        </div>
     </div>
   )
 }

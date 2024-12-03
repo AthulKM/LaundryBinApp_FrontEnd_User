@@ -1,6 +1,6 @@
 #root {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh !important;
   /* overflow: hidden !important; */
 }
 
@@ -69,6 +69,22 @@ body {
     box-shadow: none !important;
     padding: 10px !important;
     margin: 0 !important;
+}
+.offerSlider {
+  background-color: rgba(255,255,255,0) !important;
+}
+.slick-slide, .slick-initialized {
+  background-color: rgba(255,255,255,0) !important;
+}
+.slick-list {
+  background-color: rgba(255,255,255,0) !important;
+}
+.offerSlideContent {
+  background-color: rgba(255,255,255,0) !important;
+}
+.slick-track {
+  display: flex;
+  background-color: rgba(255,255,255,0) !important;
 }
 
 
