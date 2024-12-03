@@ -103,6 +103,7 @@ body {
   font-size: 35px;
 }
 .registrationContainer .form-label {
+  color: black !important;
   font-size: 30px;
   
 }
