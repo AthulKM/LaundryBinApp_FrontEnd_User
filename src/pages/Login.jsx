@@ -66,6 +66,9 @@ const Login = () => {
   const handleForgotPassword = () => {
     navigate('/forgot-password');
   }
+  const handleRegisterNew = () => {
+    navigate('/register');
+  }
 
 
 
@@ -112,11 +115,14 @@ const Login = () => {
               <Button className="loginButton mt-20" variant="primary" type="submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Logging in...' : 'Login'}
               </Button>
-
+            
               <button className="paragraphButton mt-20" onClick={handleForgotPassword}>
                 <p>Forgot password ?</p>
               </button>
 
+              <button className="paragraphButton mt-20" onClick={handleRegisterNew}>
+                <p>New user ? Register here</p>
+              </button>
             </Form>
           )}
 
