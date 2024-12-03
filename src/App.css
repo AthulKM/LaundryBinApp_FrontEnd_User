@@ -93,18 +93,18 @@ body {
 }
 .registrationContainer h2 {
   color: rgb(24, 25, 25) !important;
-  font-size: 35px;
+  font-size: 20px;
 }
 .registrationContainer .form-label {
   color: black !important;
-  font-size: 30px;
+  font-size: 20px;
   
 }
 
 /* Login component */
 .formContainer {
   /* background: linear-gradient(to right, #2becd6, #7bedfe); */
-  background-image: url(/src/assets/images/login_bg.jpg) !important;
+  background-image: url('/src/assets/images/login_bg.jpg') !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
